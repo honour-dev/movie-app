@@ -1,16 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import MovieCard from './MovieCard'
 import HomePage from './pages/HomePage'
+import { Routes, Route } from 'react-router-dom'
+import FavouritePage from './pages/FavouritePage'
+import Navbar from './Navbar'
 
 function App() {
   return (
     <>
-      <div className='text-xl'>
-        <HomePage/>
-      </div>
+      <main className='text-xl'>
+        <Navbar/>
+        <div>
+          <Routes>
+          <Route path='/' element={<HomePage/>}/>
+          <Route path='/favourite' element={<FavouritePage/>}/>
+        </Routes>
+        </div>        
+      </main>
     </>
   )
 }

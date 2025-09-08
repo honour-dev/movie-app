@@ -11,8 +11,7 @@ const MovieCard = ({movie}) => {
       <div className=''>
         <img src={movie.url} alt={movie.title} />
         <div className=''>
-          <button className='text-xl' onClick={onFavouriteClick}>
-
+          <button className='' onClick={onFavouriteClick}>
           </button>
         </div>
       </div>

@@ -18,14 +18,14 @@ const HomePage = () => {
   }
 
   return (
-    <main className='flex flex-col h-screen justify-center items-center'>
-
-      <form onSubmit={handleSearch} className='mb-4'>
+    <main className='flex flex-col items-center w-full max-w-7xl px-4'>
+      <form onSubmit={handleSearch} className='mb-4 w-full max-w-xl flex justify-center'>
         <input 
           type="text" 
           placeholder='search for movies...' 
           value={searchQuery} 
-          onChange={(e) => setSearchQuery(e.target.value)} className='p-1 pl-2 border-2 border-lime-700'
+          onChange={(e) => setSearchQuery(e.target.value)} 
+          className='p-1 pl-2 border-2 border-lime-700 w-full'
         />
         <button 
           type='submit' 
@@ -33,7 +33,7 @@ const HomePage = () => {
             search
         </button>
       </form>
-      <div>
+      <div className=''>
         {movies.map((movie) => (
         <MovieCard movie={movie} key={movie.id}/>
         ))}

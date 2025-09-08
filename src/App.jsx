@@ -8,15 +8,13 @@ import Navbar from './Navbar'
 function App() {
   return (
     <>
-      <main className='text-xl'>
-        <Navbar/>
-        <div>
-          <Routes>
-          <Route path='/' element={<HomePage/>}/>
-          <Route path='/favourite' element={<FavouritePage/>}/>
-        </Routes>
-        </div>        
-      </main>
+      <Navbar/>
+      <div>
+        <Routes>
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='/favourite' element={<FavouritePage/>}/>
+      </Routes>
+      </div>
     </>
   )
 }

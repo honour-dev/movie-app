@@ -18,7 +18,7 @@ const HomePage = () => {
   }
 
   return (
-    <main className='flex flex-col items-center w-full max-w-7xl px-4'>
+    <main className='flex flex-col items-center px-4 md:px-[5rem]'>
       <form onSubmit={handleSearch} className='mb-4 w-full max-w-xl flex justify-center'>
         <input 
           type="text" 

@@ -32,7 +32,7 @@ const HomePage = () => {
   return (
     <main className='md:px-[5rem] px-3'>
       <section className='flex flex-col items-center px-4'>
-        <form onSubmit={handleSearch} className='mb-4 w-full max-w-xl flex justify-center'>
+        <form onSubmit={handleSearch} className='mb-4 mt-4 w-full max-w-xl flex justify-center'>
         <input 
           type="text" 
           placeholder='search for movies...' 
@@ -47,7 +47,7 @@ const HomePage = () => {
         </button>
       </form>
       </section>
-      <div className=''>
+      <div className='sm:flex sm:flex-wrap sm:gap-3'>
         {movies.map((movie) => (
         <MovieCard movie={movie} key={movie.id}/>
         ))}

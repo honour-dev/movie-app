@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
     <nav className='bg-lime-700 w-full md:px-[5rem]'>
-      <div className='flex justify-between mb-4 p-3'>
+      <div className='flex justify-between p-3'>
           <div className='cursor-pointer text-lime-100 uppercase font-bold'>
             <Link to='/'> movie app</Link>
           </div>

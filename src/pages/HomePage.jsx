@@ -1,15 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MovieCard from '../MovieCard'
+import { getPopularMovies } from '../services/api';
 
 const HomePage = () => {
-
-  const movies = [
-    {id: 1, title: 'John Wick', release_date: '2020'},
-    {id: 2, title: 'Terminator', release_date: '1999'},
-    {id: 3, title: 'The Matrix', release_date: '1998'},
-  ];
-
   const [searchQuery, setSearchQuery] = useState();
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(()=>{
+    const loadPopularMovies = async ()=>{
+      try {
+        const popularMovies = await getPopularMovies();
+        setMovies(popularMovies);
+      } catch (err) {
+        console.log(err);        
+        setError('failed to load movies...');
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadPopularMovies();
+  }, [])
 
   const handleSearch = (e) =>{
     e.preventDefault();
@@ -18,8 +30,9 @@ const HomePage = () => {
   }
 
   return (
-    <main className='flex flex-col items-center px-4 md:px-[5rem]'>
-      <form onSubmit={handleSearch} className='mb-4 w-full max-w-xl flex justify-center'>
+    <main className='md:px-[5rem] px-3'>
+      <section className='flex flex-col items-center px-4'>
+        <form onSubmit={handleSearch} className='mb-4 w-full max-w-xl flex justify-center'>
         <input 
           type="text" 
           placeholder='search for movies...' 
@@ -33,6 +46,7 @@ const HomePage = () => {
             search
         </button>
       </form>
+      </section>
       <div className=''>
         {movies.map((movie) => (
         <MovieCard movie={movie} key={movie.id}/>

@@ -7,12 +7,11 @@ const MovieCard = ({movie}) => {
   };
 
   return (
-    <article>
+    <article className='w-full max-w-[15rem] mb-3 flex justify-center md:flex-row md:flex-1'>
       <div className=''>
-        <img src={movie.url} alt={movie.title} />
+        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className=''/>
         <div className=''>
-          <button className='' onClick={onFavouriteClick}>
-          </button>
+          <button className='absolute' onClick={onFavouriteClick}></button>
         </div>
       </div>
     </article>

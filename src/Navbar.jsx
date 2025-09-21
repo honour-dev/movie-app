@@ -11,19 +11,13 @@ const Navbar = () => {
         <div className='font-medium'>
           <NavLink to='/'
             className={({ isActive }) =>
-              `border-lime-700 px-3 p-1 text-white cursor-pointer hover:bg-lime-200 hover:text-lime-700 duration-200 ${
-                isActive ? 'bg-lime-200 text-lime-700' : ''
-              }`
-            }
-          > Home </NavLink>
+              `border-lime-700 px-3 p-1 cursor-pointer hover:bg-lime-200 hover:text-lime-700 duration-200 ${isActive ? 'bg-lime-200 text-lime-700' : 'text-white'}`}
+          > Home</NavLink>
 
           <NavLink to='/favourite'
             className={({ isActive }) =>
-              `border-lime-700 ml-0.5 px-3 p-1 text-white cursor-pointer hover:bg-lime-200 hover:text-lime-700 duration-200 ${
-                isActive ? 'bg-lime-200 text-lime-700' : ''
-              }`
-            }
-          > Favourites </NavLink>
+              `border-lime-700 ml-0.5 px-3 p-1 cursor-pointer hover:bg-lime-200 hover:text-lime-700 duration-200 ${isActive ? 'bg-lime-200 text-lime-700' : 'text-white'}`}
+          > Favourites</NavLink>
         </div>
       </div>
     </nav>

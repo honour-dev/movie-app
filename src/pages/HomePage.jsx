@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MovieCard from '../MovieCard'
-import { getPopularMovies } from '../services/api';
+import { getPopularMovies, searchMovies } from '../services/api';
+import Loading from '../Loading';
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState();
@@ -23,9 +24,19 @@ const HomePage = () => {
     loadPopularMovies();
   }, [])
 
-  const handleSearch = (e) =>{
+  const handleSearch = async (e) =>{
     e.preventDefault();
-    alert(searchQuery)
+    if(!searchQuery.trim()) return;
+    if(loading) return;
+
+    setLoading(true)
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
+    } catch (err) {
+      setError('failed to load search results...');
+    }
     setSearchQuery('');
   }
 
@@ -47,11 +58,15 @@ const HomePage = () => {
         </button>
       </form>
       </section>
+ 
+      {loading ? <Loading/> :
       <div className='sm:flex sm:flex-wrap sm:gap-3'>
         {movies.map((movie) => (
         <MovieCard movie={movie} key={movie.id}/>
         ))}
       </div>
+      }
+      
     </main>
   );
 }

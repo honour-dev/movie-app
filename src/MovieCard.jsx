@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { useMovieContext } from './MovieContext';
 
 const MovieCard = ({movie}) => {
+  const {isMovieFavourite, addToFavourites, removeFromFavourites} = useMovieContext();
+  const favourite = isMovieFavourite(movie.id);
+  // const [isFavourite, setIsFavourite] = useState(false);
 
-  const [isFavourite, setIsFavourite] = useState(false);
-
-  const onFavouriteClick = () =>{
-    setIsFavourite(!isFavourite);
-    alert('Added to favourites!');
+  const onFavouriteClick = (e) =>{
+    e.preventDefault();
+    favourite ? removeFromFavourites(movie.id) : addToFavourites(movie);
   };
 
   return (
@@ -15,7 +17,7 @@ const MovieCard = ({movie}) => {
       <article>
         <div className='relative w-full group'>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
-          <button className='absolute top-2 right-2 text-xl bg-lime-70 text-white hover:cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-500' onClick={onFavouriteClick}> {isFavourite ? <FaHeart color='red'/> : <FaRegHeart/>}
+          <button className='absolute top-2 right-2 text-xl bg-lime-70 text-white hover:cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-500' onClick={onFavouriteClick}> {favourite ? <FaHeart color='red'/> : <FaRegHeart/>}
           </button>
         </div>
         <div className='bg-lime-900 text-white pl-2'>

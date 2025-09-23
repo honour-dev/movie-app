@@ -4,7 +4,7 @@ import { getPopularMovies, searchMovies } from '../services/api';
 import Loading from '../Loading';
 
 const HomePage = () => {
-  const [searchQuery, setSearchQuery] = useState();
+  const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -35,6 +35,7 @@ const HomePage = () => {
       setMovies(searchResults);
       setError(null);
     } catch (err) {
+      console.log(err);
       setError('failed to load search results...');
     }
     setSearchQuery('');

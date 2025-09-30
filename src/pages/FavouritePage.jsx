@@ -8,7 +8,7 @@ const FavouritePage = () => {
   return favouriteMovies.length > 0 ? (
     <section className='md:px-[5.5rem] px-3'>
       <h2 className='font-medium mt-[1rem] text-2xl mx-auto flex-col'>Favourite Movies.</h2>
-      <div className='mt-[1.5rem] flex sm:gap-3 sm:justify-start sm:items-start w-fit'>
+      <div className='mt-[1.5rem] md:flex md:gap-3 md:justify-start md:items-start w-fit'>
         {favouriteMovies.map((movie) => (
         <MovieCard movie={movie} key={movie.id}/>
         ))}

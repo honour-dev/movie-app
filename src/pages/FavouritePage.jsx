@@ -5,12 +5,16 @@ import MovieCard from '../MovieCard';
 const FavouritePage = () => {
   const {favouriteMovies} = useMovieContext();
 
-  return favouriteMovies ? (
-    <div className='mt-[1rem sm:flex sm:flex-wrap sm:gap-3'>
-      {favouriteMovies.map((movie) => (
-      <MovieCard movie={movie} key={movie.id}/>
-      ))}
-    </div> ) : 
+  return favouriteMovies.length > 0 ? (
+    <section className='md:px-[5.5rem] px-3'>
+      <h2 className='font-medium mt-[1rem] text-2xl mx-auto flex-col'>Favourite Movies.</h2>
+      <div className='mt-[1.5rem] flex sm:gap-3 sm:justify-start sm:items-start w-fit'>
+        {favouriteMovies.map((movie) => (
+        <MovieCard movie={movie} key={movie.id}/>
+        ))}
+      </div>
+    </section> ) 
+    : 
     ( <section className='flex flex-col h-screen justify-center mt-0'>
         <div className='mx-2 md:mx-[6rem] p-10 bg-lime-200'>
           <h2 className='font-medium text-xl text-center'>No favourite movies yet.</h2>

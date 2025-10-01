@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav className='bg-lime-700 w-full md:px-[5rem]'>
+    <nav className='bg-lime-700 w-full md:px-[5rem] fixed top-0 left-0 z-10 mb-2 shadow-lg'>
       <div className='flex justify-between p-3 md:text-xl'>
         <div className='cursor-pointer text-lime-100 md:text-2xl capitalize font-bold'>
           <NavLink to='/'>honour flix</NavLink>
